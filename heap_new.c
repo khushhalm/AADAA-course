@@ -82,13 +82,13 @@ void e_min()
 			{
 				heap[now]=heap[even];
 				heap[even]=no;
-				printf("\nheap[%i]=heap[%i]\n", now, even);
-				printf("\n%i=%i\n", heap[now], heap[even]);
+				//printf("\nheap[%i]=heap[%i]\n", now, even);
+				//printf("\n%i=%i\n", heap[now], heap[even]);
 			}
 			else
 			{
-				printf("\nheap[%i]=heap[%i]\n", now, even);
-				printf("\n%i=%i\n", heap[now], heap[even]);
+				//printf("\nheap[%i]=heap[%i]\n", now, even);
+				//printf("\n%i=%i\n", heap[now], heap[even]);
 				print_array();
 				break;
 			}
@@ -102,13 +102,13 @@ void e_min()
 			{
 				heap[now]=heap[odd];
 				heap[odd]=no;
-				printf("\nheap[%i]=heap[%i]\n", now, odd);
-				printf("\n%i=%i\n", heap[now], heap[odd]);
+				//printf("\nheap[%i]=heap[%i]\n", now, odd);
+				//printf("\n%i=%i\n", heap[now], heap[odd]);
 			}
 			else
 			{
-				printf("\nheap[%i]=heap[%i]\n", now, odd);
-				printf("\n%i=%i\n", heap[now], heap[odd]);
+				//printf("\nheap[%i]=heap[%i]\n", now, odd);
+				//printf("\n%i=%i\n", heap[now], heap[odd]);
 				print_array();
 				break;
 			}
@@ -129,87 +129,9 @@ void e_min()
 		{
 			heap[now]=heap[even];
 			heap[even]=no;
-			printf("\nheap[%i]=heap[%i]\n", now, even);
-			printf("\n%i=%i\n", heap[now], heap[even]);
 		}
 	}
 	print_array();
-}
-void option_2()
-{
-	//do nothing
-	//extract min
-	printf("Min no is %i", heap[1]);
-	heap[1]=heap[size];
-	int no = heap[size];
-	size-=1;
-	heap_size-=1;
-	int now = size/2;
-	int now_even;
-	if (now==1 && size==2)
-	{
-		//now = 1;
-		now_even = size;
-		printf("\n1 now=%i and now_even=%i\n",now, now_even);	
-	}
-	else if (now==1 && size==3)
-	{
-		now = 2;
-		now_even = size;
-		printf("\n2 now=%i and now_even=%i\n",now, now_even);	
-	}
-	else if (now==2 && size==4)
-	{
-		//now = 2;
-		now_even = 3;
-		printf("\n3 now=%i and now_even=%i\n",now, now_even);	
-	}	
-	else if (size%2==0)
-	{
-		now_even = size/2-1;
-		printf("\n4 now=%i and now_even=%i\n",now, now_even);	
-	}
-	else
-	{
-		now_even = size/2+1;
-		printf("\n5 now=%i and now_even=%i\n",now, now_even);
-	}
-	int new_no = 1;
-	print_array();
-	while (now>=1 && now<=size && now_even>=1 && now_even<=size)
-    {
-    	if (heap[now]<no && heap[now]<=heap[now_even])
-    	{
-			//nono = heap[now/2];
-		    heap[now/2] = heap[now];
-		    //no = heap[now];
-		    new_no = now;
-		    now *= 2;
-		    now_even = now+1;
-		    printf("\nnow is %i\n",now);
-		    print_array();
-        }
-        else if (heap[now_even]<no && heap[now]>=heap[now_even])
-        {
-			//nono = heap[now_even/2];
-		    heap[now_even/2] = heap[now_even];
-		    //no = heap[now_even];
-		    new_no = now_even;
-		    now_even *= 2;
-		    now = now_even+1;
-		    printf("\nnow_even is %i\n",now_even);
-		    print_array();
-		}
-        else
-        {
-        	break;
-        }
-        printf("\nnow=%i and now_even=%i and \n",now, now_even);
-    }
-    
-    heap[new_no]=no;
-    printf("\nnow is %i, heap[now] is %i\n",now, heap[now]);
-    print_array();
 }
 void option_3()
 {
