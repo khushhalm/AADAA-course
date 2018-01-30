@@ -17,37 +17,39 @@ void insert(int no)
 {
     heap_size++;
     heap[heap_size] = no;
-    //printf("location=%d,value=%d \n", heap_size, heap[heap_size]);
 
     int now = heap_size;
     while (heap[now / 2] > no)
     {
         heap[now] = heap[now / 2];
         now /= 2;
-        //printf("now is %i\n",now);
     }
     heap[now] = no;
 }
 
+void inserting_elements(int inserting)
+{
+    int no, iter;
+    for(iter = 1; iter <= inserting; iter++) {
+        printf("Enter next elements you want to insert to the heap!:  ");
+        scanf("%i", &no);
+        insert(no);
+    }
+    print_array();
+}
+
 void option_0()
 {
-	printf("How many elements you want to insert?\n");
+    printf("How many elements you want to insert?\n");
     scanf("%i", &size);
-    //printf("%i\n", size);
     
     //init array
     heap_size = 0;
     heap[0] = -INT_MAX;
     //end of init
     
-    int no, iter;
-    for(iter = 1; iter <= size; iter++) {
-        printf("Enter next elements you want to insert to the heap!:  ");
-        scanf("%i", &no);
-        insert(no);
-        //printf("%i, %i \n", iter, size);
-    }
-    print_array();
+    int inserting=size;
+    inserting_elements(inserting);
 }
 
 void option_1()
@@ -56,14 +58,8 @@ void option_1()
     int new_size;
     scanf("%i", &new_size);
     size += new_size;
-    //printf("%i\n", size);
-    int no, iter;
-    for(iter = 1; iter <= new_size; iter++) {
-        printf("Enter next elements you want to insert to the heap!:  ");
-        scanf("%i", &no);
-        insert(no);
-    }
-    print_array();
+    int inserting=new_size;
+    inserting_elements(inserting);
 }
 
 void e_min()
@@ -82,13 +78,9 @@ void e_min()
 			{
 				heap[now]=heap[even];
 				heap[even]=no;
-				//printf("\nheap[%i]=heap[%i]\n", now, even);
-				//printf("\n%i=%i\n", heap[now], heap[even]);
 			}
 			else
 			{
-				//printf("\nheap[%i]=heap[%i]\n", now, even);
-				//printf("\n%i=%i\n", heap[now], heap[even]);
 				print_array();
 				break;
 			}
@@ -102,13 +94,9 @@ void e_min()
 			{
 				heap[now]=heap[odd];
 				heap[odd]=no;
-				//printf("\nheap[%i]=heap[%i]\n", now, odd);
-				//printf("\n%i=%i\n", heap[now], heap[odd]);
 			}
 			else
 			{
-				//printf("\nheap[%i]=heap[%i]\n", now, odd);
-				//printf("\n%i=%i\n", heap[now], heap[odd]);
 				print_array();
 				break;
 			}
@@ -121,7 +109,6 @@ void e_min()
 			printf("broken");
 			print_array();
 		}
-		//print_array();
 	}
 	if(even==size)
 	{
@@ -135,27 +122,20 @@ void e_min()
 }
 void option_3()
 {
-	//do nothing
 	//check for empty
 	if (heap_size==0)
-	{
 		printf("It is empty");
-	}
 	else
-	{
 		printf("It is not empty");
-	}
 }
 
 int main()
 {  
-    //now three option
     while(1)
 	{
 		printf("\nWhat do you want to do now?\n1:Insert\n2:Extract Min\n3:Is Empty\n4:Exit\n");
 		int ques;
 		scanf("%i", &ques);
-		//printf("%i\n", ques);
 		switch(ques)
 		{
 			case 1:
@@ -169,14 +149,12 @@ int main()
 				}
 				break;
 			case 2:
-				//option_2();
 				e_min();
 				break;
 			case 3:
 				option_3();
 				break;
 			case 4:
-				printf("\nThanks\n");
 				return 0;
 		}
     }
